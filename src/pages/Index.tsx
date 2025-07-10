@@ -26,6 +26,64 @@ const Index = () => {
     { name: "Для детей", count: "1.8M", icon: "Baby" },
   ];
 
+  const getChannelAvatar = (channelName) => {
+    const avatars = {
+      "Наука Про":
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop&crop=face&auto=format",
+      "Спорт ТВ":
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=50&h=50&fit=crop&crop=face&auto=format",
+      "Музыка Today":
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=50&h=50&fit=crop&crop=face&auto=format",
+      "Детский канал":
+        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=50&h=50&fit=crop&crop=face&auto=format",
+      "Космос ТВ":
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop&crop=face&auto=format",
+      "Спорт Про":
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=50&h=50&fit=crop&crop=face&auto=format",
+      "Быстрая наука":
+        "https://images.unsplash.com/photo-1494790108755-2616b67494c1?w=50&h=50&fit=crop&crop=face&auto=format",
+      "Космос Арт":
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=50&h=50&fit=crop&crop=face&auto=format",
+      "Спорт Миг":
+        "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?w=50&h=50&fit=crop&crop=face&auto=format",
+      "Малыш ТВ":
+        "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=50&h=50&fit=crop&crop=face&auto=format",
+      "Музыка Плюс":
+        "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=50&h=50&fit=crop&crop=face&auto=format",
+    };
+    return (
+      avatars[channelName] ||
+      `https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=50&h=50&fit=crop&crop=face&auto=format`
+    );
+  };
+
+  const getUserAvatar = (userId) => {
+    const avatars = [
+      "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=40&h=40&fit=crop&crop=face&auto=format",
+      "https://images.unsplash.com/photo-1494790108755-2616b67494c1?w=40&h=40&fit=crop&crop=face&auto=format",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face&auto=format",
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop&crop=face&auto=format",
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face&auto=format",
+    ];
+    return avatars[userId % avatars.length];
+  };
+
+  const getVideoThumbnail = (videoId, isShort = false) => {
+    if (isShort) {
+      return `https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=300&h=400&fit=crop&auto=format`;
+    }
+
+    const thumbnails = [
+      "https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=400&h=225&fit=crop&auto=format", // космос
+      "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&h=225&fit=crop&auto=format", // спорт
+      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=225&fit=crop&auto=format", // музыка
+      "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=400&h=225&fit=crop&auto=format", // дети
+      "https://images.unsplash.com/photo-1502134249126-9f3755a50d78?w=400&h=225&fit=crop&auto=format", // наука
+      "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&h=225&fit=crop&auto=format", // спорт 2
+    ];
+    return thumbnails[videoId % thumbnails.length];
+  };
+
   const videos = [
     {
       id: 1,
@@ -39,6 +97,7 @@ const Index = () => {
       subscribers: "2.3M",
       description:
         "Последние открытия в космосе, которые изменят наше понимание Вселенной. Новые экзопланеты, черные дыры и многое другое!",
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     },
     {
       id: 2,
@@ -52,6 +111,7 @@ const Index = () => {
       subscribers: "1.8M",
       description:
         "Самые красивые и зрелищные голы этого сезона. Невероятные удары и мастерство лучших футболистов!",
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     },
     {
       id: 3,
@@ -65,6 +125,7 @@ const Index = () => {
       subscribers: "5.2M",
       description:
         "Лучшие музыкальные хиты этого месяца. Новинки, которые покорили чарты и сердца слушателей.",
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     },
     {
       id: 4,
@@ -78,6 +139,7 @@ const Index = () => {
       subscribers: "890K",
       description:
         "Весёлые и познавательные песни о космосе для детей. Изучаем планеты, звёзды и космические корабли!",
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     },
     {
       id: 5,
@@ -91,6 +153,7 @@ const Index = () => {
       subscribers: "3.1M",
       description:
         "Увлекательный рассказ о строении Вселенной от Большого взрыва до современности. Научные факты простым языком.",
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     },
     {
       id: 6,
@@ -104,6 +167,7 @@ const Index = () => {
       subscribers: "1.2M",
       description:
         "Невероятные футбольные трюки и финты от профессиональных игроков. Учимся мастерству у лучших!",
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     },
   ];
 
@@ -118,6 +182,7 @@ const Index = () => {
       category: "Наука",
       likes: 125000,
       subscribers: "4.5M",
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     },
     {
       id: 8,
@@ -129,6 +194,7 @@ const Index = () => {
       category: "Наука",
       likes: 98000,
       subscribers: "2.9M",
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     },
     {
       id: 9,
@@ -140,6 +206,7 @@ const Index = () => {
       category: "Спорт",
       likes: 67000,
       subscribers: "3.2M",
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     },
     {
       id: 10,
@@ -151,6 +218,7 @@ const Index = () => {
       category: "Для детей",
       likes: 45000,
       subscribers: "1.8M",
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     },
     {
       id: 11,
@@ -162,6 +230,7 @@ const Index = () => {
       category: "Музыка",
       likes: 89000,
       subscribers: "6.1M",
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     },
   ];
 
@@ -275,7 +344,7 @@ const Index = () => {
             >
               <div className="relative">
                 <img
-                  src="img/4af26aad-97a0-4e9e-b107-a44aa723560d.jpg"
+                  src={getVideoThumbnail(short.id, true)}
                   alt={short.title}
                   className="w-full h-72 object-cover rounded-t-lg"
                 />
